@@ -22,12 +22,8 @@ public class ListaPersonas {
 			@Override public int compare(Persona p1, Persona p2) {
 	            return p1.getUnico() - p2.getUnico(); // Ascending
 	        }
-		});
-		for(Persona pers:Lista) {
-		
+		});	
 			dat = Lista.get(0).getId();
-	    
-		}
            System.out.println("Esta es la raiz "  + dat);
 	raiz =new Nodo (dat);
 	
