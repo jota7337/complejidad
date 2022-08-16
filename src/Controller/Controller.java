@@ -95,6 +95,7 @@ public class Controller {
 					int frutas=Integer.parseInt(vista.pedirdato("ingrese el numero de frutas"));
 					recurs.recursivo(frutas);
 					vista.mostrarmensaje(""+recurs.counter);
+					recurs.counter= 0;
 					break;
 				case 6:
 					
