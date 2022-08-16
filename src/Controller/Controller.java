@@ -7,6 +7,7 @@ import java.util.Comparator;
 import Model.ListaPersonas;
 import Model.Nodo;
 import Model.Persona;
+import Model.Recursive;
 import Vista.Vista;
 
 public class Controller {
@@ -14,6 +15,7 @@ public class Controller {
 	private ArrayList<Persona> filaauxiliar;
 	private Vista vista;
 	private Nodo nodo1;
+	private Recursive recurs;
 	
 	public Controller() {
 		nodo1=new Nodo(0);
@@ -30,6 +32,7 @@ public class Controller {
 		filaauxiliar.add(new Persona("Sandra Ruiz","1970/12/24",2,0));
 		filaauxiliar.add(new Persona("Marcos Solano","2001/06/25",47,0));
 		vista=new Vista();
+		recurs=new Recursive();
 		funcionar();
 	}
 	
@@ -42,7 +45,7 @@ public class Controller {
 			"\n"+"3.Verificar lista cronologicamente"+
 	
 			"\n"+"4.Alimentar arbol n_ario con lista"
-						+"\n"+"5.Salir"));
+						+"\n"+"5.Recursivo"+"\n"+"6.Salir"));
 				switch(caso) {
 				case 1:
 					filaauxiliar=Filapersonas.lista_Unic(filaauxiliar);
@@ -70,6 +73,7 @@ public class Controller {
 						}
 					
 					}
+					
 					for (int k=0;k<filaauxiliar.size();k++) {
 						if(m!=filaauxiliar.get(k).getId()) {
 						int padre= vista.leerDato("Digite el id de su padre de: "+ filaauxiliar.get(k).getNombre());
@@ -88,6 +92,12 @@ public class Controller {
 				
 					break;
 				case 5:
+					int frutas=Integer.parseInt(vista.pedirdato("ingrese el numero de frutas"));
+					recurs.recursivo(frutas);
+					vista.mostrarmensaje(""+recurs.counter);
+					recurs.counter= 0;
+					break;
+				case 6:
 					
 					return;
 				}
@@ -118,7 +128,6 @@ public class Controller {
 		});
 		for(Persona pers:Lista) {
 			System.out.println(pers.getNombre()+" "+pers.getId()+" "+pers.getDate()+"\n");
-	
 			dat +=pers.getNombre()+" "+pers.getId()+" "+pers.getDate()+"\n";
 			
 		}
